@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <header class="flex justify-between items-center p-4 bg-gray-800">
+        <h1 class="text-xl font-bold text-teal-300">Post Website</h1>
+        <div class="flex items-center">
+            <input type="text" placeholder="Search users..." class="px-4 py-2 rounded bg-gray-700 text-white" />
+            <img src="https://via.placeholder.com/40" alt="User Image" class="rounded-full ml-4 cursor-pointer" title="View Profile">
+        </div>
+    </header>
+
+    <main class="p-4 flex">
+        <div class="w-3/4 pr-4">
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Post Card -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h2 class="font-bold text-lg">Post Title</h2>
+                    <div class="flex items-center mb-2 mt-2">
+                        <img src="https://via.placeholder.com/30" alt="User Profile Image" class="rounded-full mr-2 w-8 h-8">
+                        <span class="font-semibold">Posted by UserName</span>
+                    </div>
+                    <p class="mt-2">This is a sample post content. Users can read and interact with it.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <div>
+                            <button class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
+                                <i class="fas fa-thumbs-up"></i> Like
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded" onclick="toggleCommentSection(this)">
+                                <i class="fas fa-comment"></i> Comment
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="hidden mt-4 comment-section">
+                        <textarea placeholder="Write a comment..." class="w-full p-2 rounded bg-gray-700 text-white"></textarea>
+                        <button class="bg-purple-500 hover:bg-purple-600 px-3 py-1 mt-2 rounded">
+                            <i class="fas fa-paper-plane"></i> Post Comment
+                        </button>
+                        <div class="mt-2 border-t border-gray-600 pt-2">
+                            <div class="flex items-center mt-2">
+                                <span class="font-semibold">User1:</span>
+                                <p class="ml-2">Great post!</p>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <span class="font-semibold">User2:</span>
+                                <p class="ml-2">Thanks for sharing!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat for more posts -->
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h2 class="font-bold text-lg">Another Post Title</h2>
+                    <div class="flex items-center mb-2 mt-2">
+                        <img src="https://via.placeholder.com/30" alt="User Profile Image" class="rounded-full mr-2 w-8 h-8">
+                        <span class="font-semibold">Posted by AnotherUser</span>
+                    </div>
+                    <p class="mt-2">This is another sample post content.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <div>
+                            <button class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
+                                <i class="fas fa-thumbs-up"></i> Like
+                            </button>
+                            <button class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded" onclick="toggleCommentSection(this)">
+                                <i class="fas fa-comment"></i> Comment
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="hidden mt-4 comment-section">
+                        <textarea placeholder="Write a comment..." class="w-full p-2 rounded bg-gray-700 text-white"></textarea>
+                        <button class="bg-purple-500 hover:bg-purple-600 px-3 py-1 mt-2 rounded">
+                            <i class="fas fa-paper-plane"></i> Post Comment
+                        </button>
+                        <div class="mt-2 border-t border-gray-600 pt-2">
+                            <div class="flex items-center mt-2">
+                                <span class="font-semibold">User1:</span>
+                                <p class="ml-2">Interesting perspective!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-4 bg-gray-800 text-center">
+        <p>&copy; 2024 Post Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle comment section visibility
+        function toggleCommentSection(button) {
+            const commentSection = button.closest('.bg-gray-800').querySelector('.comment-section');
+            commentSection.classList.toggle('hidden');
+        }
+
+        // Add JavaScript for handling other click events here
+    </script>
+</body>
+</html>
