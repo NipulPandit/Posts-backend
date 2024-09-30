@@ -61,13 +61,21 @@ app.post('/signin', async (req, res) => {
 
     const user = await post.findOne({ email: email });
 
-    if (!user) return res.json({ message: 0 });
+    if (!user) {return res.json({ message2: 2 });}
+    else{
 
-    const verify= await bcrypt.compare(password, user.password)
+        const verify= await bcrypt.compare(password, user.password)
 
-    if(email === user.email && verify)return res.status(200).json({message: 1})
-        else return res.status(300).json({message: 0})
+    if(email === user.email && verify){ 
+        let token=jwt.sign(email, 'gotit');
+        res.cookie('Token', token);
+        return res.status(200).json({message2: 1})
+    }
+        else {return res.status(300).json({message2:0})}
 
+    }
+    
+  
 });
 
 

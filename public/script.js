@@ -29,6 +29,8 @@ function showSignUp() {
 
 
 let signIn=document.querySelector('#sign_in');
+let popup=document.querySelector('#flashText');
+let popmessage=document.querySelector('#flashMessage');
 
 signIn.addEventListener("submit" , async(e)=>{
 
@@ -49,7 +51,37 @@ signIn.addEventListener("submit" , async(e)=>{
 
 
   const final= await response.json();
-   sign.style.display='none'
-  console.log(final)
+   
+  
+  if(final.message2 == 2){
+    popup.innerText="Something went wrong"
 
+    popmessage.style.opacity="1"
+    
+    setTimeout(()=>{
+      popmessage.style.opacity="0"
+     }, 2000)
+     showSignUp()
+
+  }else if(final.message2 == 1){
+      popup.innerText="Welcome to our webpage"
+
+      popmessage.style.opacity="1"
+      setTimeout(()=>{
+        popmessage.style.opacity="0"
+       }, 2000)
+
+       sign.style.display="none";
+  }else if(final.message2 == 0){
+    popup.innerText="something went wrong"
+    popmessage.style.opacity="1"
+
+    
+   setTimeout(()=>{
+    popmessage.style.opacity="0"
+   }, 2000)
+   showSignUp()
+   
+}
 })
+
