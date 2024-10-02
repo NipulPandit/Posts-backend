@@ -52,43 +52,7 @@
     <main class="p-4 flex">
         <div class="w-full">
             <div class="grid grid-cols-1 gap-4 " id="post_content">
-                <!-- third post -->
-                <!-- <div class="bg-gray-800 p-4 rounded-lg shadow-md ">
-                    <div class="flex items-center mb-3">
-                        <img src="https://via.placeholder.com/30" alt="User Image" class="rounded-full mr-2 w-8 h-8">
-                        <h2 class="font-bold text-lg">Post Title </h2>
-                    </div>
-                    <p class="mt-2">This is a sample post content. Users can read and interact with it.</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <div>
-                            <button class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded">
-                                <i class="fas fa-thumbs-up"></i> Like
-                            </button>
-                            <button class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded" onclick="toggleCommentSection(this)">
-                                <i class="fas fa-comment"></i> Comment
-                            </button>
-                        </div>
-                    </div>
-
-                  
-                     <div class="hidden mt-4 comment-section">
-                        <textarea placeholder="Write a comment..." class="w-full p-2 rounded bg-gray-700 text-white outline-none"></textarea>
-                        <button class="bg-purple-500 hover:bg-purple-600 px-3 py-1 mt-2 rounded">
-                            <i class="fas fa-paper-plane"></i> Post Comment
-                        </button>
-                        <div class="mt-2 border-t border-gray-600 pt-2">
-                            <div class="flex items-center mt-2">
-                                <span class="font-semibold">User1:</span>
-                                <p class="ml-2">Great post!</p>
-                            </div>
-                            <div class="flex items-center mt-2">
-                                <span class="font-semibold">User2:</span>
-                                <p class="ml-2">Thanks for sharing!</p>
-                            </div>
-                        </div>
-                    </div>
-               </div> -->
-                 <!-- thir post end -->
+               <!-- dynamic html insertion -->
             </div>
         </div>
 
@@ -120,69 +84,6 @@
 
     <footer class="p-4 bg-gray-800 text-center">
         <p>&copy; 2024 Post Website. All rights reserved.</p>
-
-        
-        <div id="form_reg" class="absolute inset-0 flex justify-center items-center bg-gray-900 bg-opacity-75 hidden">
-            <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md relative">
-                <button id="closeButton" class="absolute top-3 right-5 text-[#f7f7f7] hover:text-white" onclick="closeForm()">
-                    <i class="fas fa-times text-xl text-[#f7f7f7]"></i>
-                </button>
-                <div class="flex justify-center mb-6">
-                    <button id="signInTab" class="text-white font-semibold py-2 px-4 bg-indigo-500 rounded-l-lg hover:bg-indigo-600" onclick="showSignIn()">Sign In</button>
-                    <button id="signUpTab" class="text-white font-semibold py-2 px-4 bg-gray-700 rounded-r-lg hover:bg-indigo-600" onclick="showSignUp()">Sign Up</button>
-                </div>
-
-                <!-- Sign In Form -->
-                <div id="signInForm" class="sign-form">
-                    <form action="/signin" method="POST" id="sign_in">
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-semibold text-left" for="signInEmail">Email*</label>
-                            <div class="flex items-center border rounded-lg bg-gray-700 p-2">
-                                <i class="fas fa-envelope text-gray-400"></i>
-                                <input class="ml-2 w-full bg-transparent focus:outline-none input:bg-gray-700 text-black" type="email" name="email" placeholder="Enter your email" id="in_email">
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-semibold text-left" for="signInPassword">Password*</label>
-                            <div class="flex items-center border rounded-lg bg-gray-700 p-2">
-                                <i class="fa-solid fa-eye-slash text-gray-400 eye"></i>
-                                <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="password"  name="password" placeholder="Enter your password" id="in_password">
-                            </div>
-                        </div>
-                        <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Sign In</button>
-                    </form>
-                </div>
-
-                <!-- Sign Up Form -->
-                <div id="signUpForm" class="sign-form hidden">
-                    <form action="/signup" method="post" id="sign_up">
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-semibold text-left" for="signUpName">Name*</label>
-                            <div class="flex items-center border rounded-lg bg-gray-700 p-2">
-                                <i class="fas fa-user text-gray-400"></i>
-                                <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="text" id="signUpName" name="name" placeholder="Enter your name">
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-semibold text-left" for="signUpEmail">Email*</label>
-                            <div class="flex items-center border rounded-lg bg-gray-700 p-2">
-                                <i class="fas fa-envelope text-gray-400"></i>
-                                <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="email" id="signUpEmail" name="email" placeholder="Enter your email" >
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block mb-2 text-sm font-semibold text-left" for="signUpPassword">Password*</label>
-                            <div class="flex items-center border rounded-lg bg-gray-700 p-2">
-                                <i class="fa-solid fa-eye-slash text-gray-400 eye"></i>
-                                <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="password" id="signUpPassword" name="password" placeholder="Enter your password">
-                            </div>
-                        </div>
-                        <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Sign Up</button>
-                        
-                    </form>
-                </div>
-            </div>
-        </div>
     </footer>
 
 
@@ -195,7 +96,7 @@
         }
 
     
-        const message="<% message %><%= message %>";
+      
     </script>
     
     <script src="script.js"></script>

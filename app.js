@@ -19,19 +19,27 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', async(req, res)=>{
     
-    if(Object.keys(req.cookies).length=== 0)return res.render('index', {message: 0})
+    if(Object.keys(req.cookies).length=== 0)return res.render('dashboard', {message: 0})
         else {
                 const cook=req.cookies.Token;
                 const iden= jwt.verify(cook, 'gotit')
                 const user= await user_module.findOne({'email': iden})
                     if(!user){
-                        return  res.render('index', {message: 2})}
+                        return  res.render('dashboard', {message: 2})}
                     else {
-                        res.render('index', {message: 1})
+                        return res.redirect('/home')
                     }
             }
         
 })
+
+app.get('/home', (req, res)=>{
+    if(Object.keys(req.cookies).length=== 0)return res.redirect('/');
+    
+    res.render('index');
+
+})
+
 
 app.post('/signup', async (req, res)=>{
     const {name, email, password}=req.body;
@@ -111,27 +119,10 @@ app.post('/createPost', async(req,res)=>{
 
 
 app.get('/showpost', async(req, res)=>{
-    // if(Object.keys(req.cookies).length=== 0)return res.json({message: "please LogIn or SignUp", code: 400})
-
-    //     const cook=req.cookies.Token;
-    //     const iden= jwt.verify(cook, 'gotit')
-    //     const user= await user_module.findOne({'email': iden}).populate('post');
-
-    //     // if(!user.post.length ===0) return res.json({message: "No post created yet", code: 0})
-    //     if(user.post.length === 0) return res.json({message: "No post created yet", code: 0});
-
-    //     res.json({user: user, code: 1})
-
-    
-
    const data= await post.find().populate({
     path: 'author',
     select: '-password, -post'
    });
-
-//    data.forEach((val)=>{
-//     console.log(val)
-//    })
 
     if(data.length === 0) return res.json({message: 'No post yet created by any user', code: 0});
         else {res.json({data: data,code: 1})}

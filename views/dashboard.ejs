@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        
+        /* Autofill styles for input fields */
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #374151 inset;
+            box-shadow: 0 0 0 30px #374151 inset; 
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0 30px #374151 inset; 
+            box-shadow: 0 0 0 30px #374151 inset; 
+        }
+
+        
+       
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <div id="flashMessage" class=" fixed w-full max-w-sm mx-auto p-2 rounded-lg shadow-lg text-center bg-indigo-500 transition-transform transition-opacity duration-500 ease-in-out transform translate-y-[-50px] opacity-0 animate-enter z-10" style="top: 20px; left: 50%; transform: translateX(-50%);">
+        <p id="flashText"></p>
+    </div>  
+
+    <div id="form_reg" class="absolute inset-0 flex justify-center items-center bg-gray-900 bg-opacity-75 ">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md relative">
+            <button id="closeButton" class="absolute top-3 right-5 text-[#f7f7f7] hover:text-white" onclick="closeForm()">
+                <i class="fas fa-times text-xl text-[#f7f7f7]"></i>
+            </button>
+            <div class="flex justify-center mb-6">
+                <button id="signInTab" class="text-white font-semibold py-2 px-4 bg-indigo-500 rounded-l-lg hover:bg-indigo-600" onclick="showSignIn()">Sign In</button>
+                <button id="signUpTab" class="text-white font-semibold py-2 px-4 bg-gray-700 rounded-r-lg hover:bg-indigo-600" onclick="showSignUp()">Sign Up</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signInForm" class="sign-form">
+                <form action="/signin" method="POST" id="sign_in">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signInEmail">Email*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                            <input class="ml-2 w-full bg-transparent focus:outline-none input:bg-gray-700 text-black" type="email" name="email" placeholder="Enter your email" id="in_email">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signInPassword">Password*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2">
+                            <i class="fa-solid fa-eye-slash text-gray-400 eye"></i>
+                            <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="password"  name="password" placeholder="Enter your password" id="in_password">
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Sign In</button>
+                </form>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signUpForm" class="sign-form hidden">
+                <form action="/signup" method="post" id="sign_up">
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signUpName">Name*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2">
+                            <i class="fas fa-user text-gray-400"></i>
+                            <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="text" id="signUpName" name="name" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signUpEmail">Email*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                            <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="email" id="signUpEmail" name="email" placeholder="Enter your email" >
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-left" for="signUpPassword">Password*</label>
+                        <div class="flex items-center border rounded-lg bg-gray-700 p-2">
+                            <i class="fa-solid fa-eye-slash text-gray-400 eye"></i>
+                            <input class="ml-2 w-full bg-gray-700 focus:outline-none" type="password" id="signUpPassword" name="password" placeholder="Enter your password">
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg font-semibold" type="submit">Sign Up</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const message='<%=message %>'
+    </script>
+    <script src="flash.js"></script>
+</body>
+</html>
