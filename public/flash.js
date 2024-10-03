@@ -14,30 +14,6 @@ function closeForm() {
     sign.classList.add('hidden');
   }
   
- 
-
-  function check_valid(val){
-
-    if(val == 0){ 
-      show_normal("SignIn or SigUp your self");
-      showSignIn()
-      sign.classList.remove('hidden');
-    }
-  
-    // if(val ==1){
-    //   show_normal("Welcome Back dear user");
-    //   sign.classList.add('hidden');
-    // }
-  
-    if(val == 2){
-      show_normal("No account found, Please register yourself");
-      sign.classList.remove('hidden');
-      showSignUp();
-    }
-  }
-
-  check_valid(message)
-  
 
   eye.forEach((val, id)=>{
     val.addEventListener('click', ()=>{
@@ -92,7 +68,7 @@ function showSignUp() {
     document.getElementById('signInTab').classList.remove('bg-indigo-500');
   }
 
-
+//   sign in process
   signIn.addEventListener("submit" , async(e)=>{
     e.preventDefault();
     const email= document.querySelector('#in_email').value;
@@ -109,20 +85,14 @@ function showSignUp() {
   
     const final= await response.json();
      
-    if(final.message2 == 2)
-      show("Something went wrong")
-    else if(final.message2 == 1){
-    //   {show_normal("Welcome to our webpage") 
-    window.location.href='/home';
-      sign.classList.add('hidden');
-      // showpost();
-    }
-      
-    else{
-      show("Something went wrong") }
-    
+    window.location.href='/'; 
   })
-  
+
+  //   sign in processend
+
+//   sign up process
+
+
   signUp.addEventListener('submit', async(e)=>{
     
     e.preventDefault()
@@ -142,11 +112,16 @@ function showSignUp() {
       })
   
       const final= await response.json();
-      show_normal(final.message)
-      sign.classList.add('hidden')
-      // showpost();
+      if(final.code ===200){
+        window.location.href="/";
+      }else{
+        show_normal(data.message)
+      }
+     
   })
-  
+
+
+  //   sign up process end
 
   function show(value){
     popup.innerText=value;
@@ -170,3 +145,4 @@ function showSignUp() {
        }, 2000)
   }
   
+  show_normal(message)

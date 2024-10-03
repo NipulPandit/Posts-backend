@@ -7,16 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        html,body{
+            height: 100%;
+            width: 100%;
         }
-        main {
-            flex: 1;
-        }
-        
-        /* Autofill styles for input fields */
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0 30px #374151 inset;
             box-shadow: 0 0 0 30px #374151 inset; 
@@ -28,8 +22,14 @@
             box-shadow: 0 0 0 30px #374151 inset; 
         }
 
+        .no-scrollbar::-webkit-scrollbar{
+                display: hidden;
+        }
         
-       
+        .no-scrollbar{
+            -ms-overflow-style: noen;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -49,14 +49,14 @@
         </div>
     </header>
 
-    <main class="p-4 flex">
-        <div class="w-full">
-            <div class="grid grid-cols-1 gap-4 " id="post_content">
-               <!-- dynamic html insertion -->
+    <main class="p-4 w-full h-5/6 ">
+        
+        <div class="w-2/3  overflow-hidden h-full overflow-y-auto scrollbar-hidden snap-align-none no-scrollbar">
+            <div class="grid grid-cols-1 gap-4" id="post_content">
+               
             </div>
+            
         </div>
-
-        <!-- User Profile Section removed from here -->
     </main>
 
     <!-- post form -->
@@ -82,7 +82,7 @@
     </div>
     <!-- post form end-->
 
-    <footer class="p-4 bg-gray-800 text-center">
+    <footer class="p-4 bg-gray-800 text-center absolute w-full bottom-0">
         <p>&copy; 2024 Post Website. All rights reserved.</p>
     </footer>
 

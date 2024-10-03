@@ -8,7 +8,6 @@ let post_content=document.querySelector('#post_content')
 let cluster='';
 
 
-document.addEventListener('DOMContentLoaded', showpost)
 
 function openPostForm() {
   document.getElementById('postForm').classList.remove('hidden');
@@ -55,8 +54,7 @@ async function showpost(){
     const data= await response.json(); 
 
    if(data.code == 0){
-     post_content.innerHTML=`<h3 class="text-lg text-zinc-700 medium ">${data.message}</h3>`
-      return post_content.innerHTML=cluster;
+      return post_content.innerHTML=`<h3 class="text-lg text-zinc-700 medium ">${data.message}</h3>`
    }
   else{
         data.data.forEach((val)=>{
@@ -65,7 +63,7 @@ async function showpost(){
           cluster +=`<div class="bg-gray-800 p-4 rounded-lg shadow-md ">
                     <div class="flex items-center mb-3">
                         <img src="https://via.placeholder.com/30" alt="User Image" class="rounded-full mr-2 w-8 h-8">
-                        <h2 class="font-bold text-lg">${val.author.name}</h2>
+                        <h2 class="font-medium text-[5rem]">${val.author.name}</h2>
                     </div>
                     <p class="mt-2">${val.content}</p>
                     <div class="flex justify-between items-center mt-4">
@@ -80,7 +78,7 @@ async function showpost(){
                     </div>
 
                   
-                    <!-- <div class="hidden mt-4 comment-section">
+                     <div class="hidden mt-4 comment-section">
                         <textarea placeholder="Write a comment..." class="w-full p-2 rounded bg-gray-700 text-white outline-none"></textarea>
                         <button class="bg-purple-500 hover:bg-purple-600 px-3 py-1 mt-2 rounded">
                             <i class="fas fa-paper-plane"></i> Post Comment
@@ -95,7 +93,7 @@ async function showpost(){
                                 <p class="ml-2">Thanks for sharing!</p>
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                 </div>`
 
                 return post_content.innerHTML=cluster
@@ -109,6 +107,7 @@ async function showpost(){
 
 
 
+document.addEventListener('DOMContentLoaded', showpost)
 
 // cluster +=`<div class="bg-gray-800 p-4 rounded-lg shadow-md ">
 //                     <div class="flex items-center mb-3">
