@@ -5,8 +5,16 @@ let popmessage=document.querySelector('#flashMessage')
 let post_form=document.querySelector('#post_form')
 let post_content=document.querySelector('#post_content')
 
+
 let cluster='';
 
+function showLoader(){
+  let loader=document.querySelector('#loader').classList.remove('hidden')
+}
+
+function hideLoader(){
+  let loader=document.querySelector('#loader').classList.add('hidden')
+}
 
 
 function openPostForm() {
@@ -50,20 +58,31 @@ post_form.addEventListener('submit', async(e)=>{
 
 
 async function showpost(){
+    let name;
+    showLoader();
     const response=await fetch('/showpost');
     const data= await response.json(); 
 
    if(data.code == 0){
+    hideLoader()
       return post_content.innerHTML=`<h3 class="text-lg text-zinc-700 medium ">${data.message}</h3>`
    }
   else{
         data.data.forEach((val)=>{
+          
+          if(val.author){
+              name=val.author.name;
+          }else{
+            name='Unknown';
+          }
           // console.log(val.content, val.author)
 
           cluster +=`<div class="bg-gray-800 p-4 rounded-lg shadow-md ">
                     <div class="flex items-center mb-3">
                         <img src="https://via.placeholder.com/30" alt="User Image" class="rounded-full mr-2 w-8 h-8">
-                        <h2 class="font-medium text-[5rem]">${val.author.name}</h2>
+                        <h2 class="font-medium text-[5rem]">
+                        ${name}
+                        </h2>
                     </div>
                     <p class="mt-2">${val.content}</p>
                     <div class="flex justify-between items-center mt-4">
@@ -95,7 +114,7 @@ async function showpost(){
                         </div>
                     </div> 
                 </div>`
-
+                hideLoader()
                 return post_content.innerHTML=cluster
         })
    }

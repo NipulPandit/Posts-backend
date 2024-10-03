@@ -193,11 +193,15 @@ app.post('/createPost',verify, async(req,res)=>{
 
 
 app.get('/showpost', async(req, res)=>{
+    
    const data= await post.find().populate({
     path: 'author',
     select: '-password, -post'
    });
 
+   
+
+   
     if(data.length === 0) {return res.json({message: 'No post yet created by any user', code: 0});}
         else {res.json({data: data,code: 1})}
 })
